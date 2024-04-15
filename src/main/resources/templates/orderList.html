@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>宠物商品城管理系统</title>
+</head>
+<body>
+
+
+<div align="center" class="ibox-title">
+    <h2>订单列表</h2>
+    <div class="ibox-tools">
+        <a class="collapse-link">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+</div>
+<div class="ibox-content">
+    <div class="table-responsive">
+        <table class=" table table-hover" data-page-size="10">
+            <thead>
+            <tr>
+                <th width="10%">订单ID</th>
+                <th width="15%">订单金额</th>
+                <th width="10%">订单状态</th>
+                <th width="10%">买家名</th>
+<!--                <th width="30%">买家留言</th>-->
+<!--                <th width="30%">买家id</th>-->
+<!--                <th width="30%">商品id</th>-->
+<!--                <th width="30%">商品名称</th>-->
+<!--                <th width="30%">商品单价</th>-->
+                <th width="10%">商品数量</th>
+                <th width="10%">物流名称</th>
+                <th width="20%">物流单号</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order : ${orderList}">
+                <td th:text="${order.id}">Onions</td>
+                <td th:text="${order.payment}">Onions</td>
+                <td th:text="${order.statusStr}">Onions</td>
+                <td th:text="${order.buyerName}">Onions</td>
+<!--                <td th:text="${order.buyerMessage}">Onions</td>-->
+<!--                <td th:text="${order.userId}">Onions</td>-->
+<!--                <td th:text="${order.productId}">Onions</td>-->
+<!--                <td th:text="${order.productName}">Onions</td>-->
+<!--                <td th:text="${order.price}">Onions</td>-->
+                <td th:text="${order.productNum}">Onions</td>
+                <td th:text="${order.shippingName}">Onions</td>
+                <td th:text="${order.shippingCode}">Onions</td>
+                <td>
+                    <a th:href="@{'/order/selectOne?id='+${order.id}}">查看订单详情</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</body>
+
+</html>

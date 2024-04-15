@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>宠物商品城管理系统</title>
+</head>
+<body>
+
+
+<div align="center" class="ibox-title">
+    <h2>商品列表</h2>
+    <div class="ibox-tools">
+        <a class="collapse-link">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+</div>
+<div class="ibox-content">
+    <div class="table-responsive">
+        <table class=" table table-hover" data-page-size="10">
+            <thead>
+            <tr>
+                <th width="10%">商品ID</th>
+                <th width="20%">商品名称</th>
+                <th width="20%">商品价格</th>
+                <!--                                        <th width="30%">商品图片</th>-->
+                <th width="20%">商品介绍</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${productList}">
+                <td th:text="${product.id}">Onions</td>
+                <td th:text="${product.name}">Onions</td>
+                <td th:text="${product.price}">Onions</td>
+                <!--                                        <td th:text="123"><img src="img/cat.png"></td>-->
+                <td th:text="${product.introduction}">Onions</td>
+                <td>
+                    <a th:href="@{'/order/add?productId='+${product.id}}">查看</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+<!--        <div class="col-sm-2 m-b-xs">-->
+<!--            <a class="btn btn-sm btn-white btn-block" href="/product/add">新增商品</a>-->
+<!--        </div>-->
+    </div>
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.petshoptest.mapper.OrderMapper">
+    <resultMap id="BaseResultMap" type="com.example.petshoptest.model.Order">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="payment" jdbcType="VARCHAR" property="payment"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="status_str" jdbcType="VARCHAR" property="statusStr"/>
+        <result column="price" jdbcType="VARCHAR" property="price"/>
+        <result column="addDate" jdbcType="TIMESTAMP" property="addDate"/>
+        <result column="updateDate" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="payment_time" jdbcType="TIMESTAMP" property="paymentTime"/>
+        <result column="consign_time" jdbcType="TIMESTAMP" property="consignTime"/>
+        <result column="shipping_name" jdbcType="VARCHAR" property="shippingName"/>
+        <result column="shipping_code" jdbcType="VARCHAR" property="shippingCode"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="buyer_message" jdbcType="VARCHAR" property="buyerMessage"/>
+        <result column="buyer_name" jdbcType="VARCHAR" property="buyerName"/>
+        <result column="product_name" jdbcType="VARCHAR" property="productName"/>
+        <result column="product_id" jdbcType="INTEGER" property="productId"/>
+        <result column="product_num" jdbcType="INTEGER" property="productNum"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from tb_order
+        where order_id = #{orderId,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.example.petshoptest.model.Order">
+        insert into tb_order (payment, status,status_str, user_id,
+        buyer_name, product_id,product_num,price,product_name)
+        values (#{payment,jdbcType=VARCHAR},#{status,jdbcType=INTEGER},#{statusStr,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER},
+        #{buyerName,jdbcType=VARCHAR},  #{productId,jdbcType=INTEGER}, #{productNum,jdbcType=INTEGER},#{price,jdbcType=VARCHAR},#{productName,jdbcType=VARCHAR})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.petshoptest.model.Order">
+        update tb_order
+        set  buyer_message= #{buyerMessage,jdbcType=VARCHAR},
+             shipping_name= #{shippingName,jdbcType=VARCHAR},
+             shipping_code=#{shippingCode,jdbcType=VARCHAR},
+             updateDate = #{updateDate,jdbcType=DATE}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from tb_order where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from tb_order
+    </select>
+
+</mapper>
